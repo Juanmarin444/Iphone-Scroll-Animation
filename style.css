@@ -171,6 +171,7 @@ nav, a {
 }
 
 .purchase-left {
+  background: white;
   display: flex;
   flex-direction: column;
   overflow: hidden;
