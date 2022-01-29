@@ -13,10 +13,8 @@ nav {
   position: fixed;
   width: 100vw;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0% 20%;
-  min-height: 7.5vh;
+  justify-content: center;
+  height: 52px;
   background: rgba(255,255,255, 0.6);
   backdrop-filter: blur(10px);
   z-index: 10;
@@ -28,15 +26,27 @@ nav, a {
   font-size: .9rem;
 }
 
+.nav-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 90%;
+  width: 950px;
+}
+
 .nav-links a,
 .nav-links button {
-  margin-left: 2rem;
+  margin-left: 1.5rem;
+}
+
+.nav-links a {
+  font-size: .75rem;
 }
 
 .buy-button {
-  padding: .2rem 2rem;
+  padding: .1rem 1rem;
   font-size: 0.6;
-  background: #3056f5;
+  background: #0171e3;
   color: white;
   border: none;
   border-radius: 1rem;
@@ -44,8 +54,8 @@ nav, a {
 }
 
 .logo {
-  font-size: 1rem;
-  font-weight: bold;
+  font-size: 1.3125rem;
+  font-weight: 500;
 }
 
 /* First Page */
@@ -66,7 +76,6 @@ nav, a {
 
 .first-page-title {
   font-size: 1.5rem;
-
 }
 
 .first-page-subtitle {
@@ -215,7 +224,10 @@ nav, a {
 .purchase-right {
   flex: 1;
   position: relative;
-  background: black;
+  /* background: #030203; */
+  background: #030203;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #1e1d1e, #030203);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #1e1d1e, #030203); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .purchase-right img {
@@ -314,4 +326,56 @@ nav, a {
   bottom: 1rem;
   transform: scale(.8);
   border-radius: 2rem;
+}
+
+@media only screen and (max-width: 1920px) {
+  nav {
+    /* background: cyan; */
+  }
+}
+@media only screen and (max-width: 1440px) {
+  nav {
+    /* background: orange; */
+  }
+}
+@media screen and (max-width: 1280px) {
+  nav {
+    /* background: purple; */
+  }
+}
+@media screen and (max-width: 1020px) {
+  nav {
+    /* background: lime; */
+  }
+}
+@media screen and (max-width: 834px) {
+  nav {
+    /* background: pink; */
+  }
+  .nav-links > a {
+    display: none;
+  }
+}
+@media screen and (max-width: 768px) {
+  nav {
+    /* background: blue; */
+  }
+  .intro-video {
+    display: none;
+  }
+  .first-page {
+    justify-content: flex-start;
+    background-image: url('./images/iphone13Hero.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+@media screen and (max-width: 320px) {
+  nav {
+    /* background: red; */
+  }
+  .nav-links > a {
+    display: none;
+  }
 }

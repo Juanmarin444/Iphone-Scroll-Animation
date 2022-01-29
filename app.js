@@ -5,10 +5,10 @@ const tlIntro =  gsap.timeline({
     trigger: '.first-page',
     pin: true,
     pinSpacing: false,
-    markers: {
-      startColor: 'orange',
-      endColor: 'orange'
-    },
+    // markers: {
+    //   startColor: 'mediumorchid',
+    //   endColor: 'mediumorchid'
+    // },
     start: '0%',
     end: '100%',
   }
@@ -34,8 +34,8 @@ const tlHRemove = gsap.timeline({
   scrollTrigger: {
     trigger: '.second-page',
     markers: {
-      startColor: 'red',
-      endColor: 'red'
+      startColor: 'firebrick',
+      endColor: 'firebrick'
     },
     scrub: true,
     start: '-15%',
@@ -45,7 +45,7 @@ const tlHRemove = gsap.timeline({
 
 tlHRemove.to('.highlight', { color: 'rgba(255,255,255, .4)', stagger: 1 });
 
-// Third Page
+// Third Page: Phone size fade in
 
 const tlSplit = gsap.timeline({
   scrollTrigger: {
@@ -54,8 +54,8 @@ const tlSplit = gsap.timeline({
     end: '10%',
     scrub: true,
     markers: {
-      startColor: 'green',
-      endColor: 'green'
+      startColor: 'lawngreen',
+      endColor: 'lawngreen'
     }
   }
 })
@@ -74,8 +74,83 @@ const tlSplitPin = gsap.timeline({
     pinSpacing: false,
     scrub: true,
     markers: {
-      startColor: 'purple',
-      endColor: 'purple'
+      startColor: 'blueviolet',
+      endColor: 'blueviolet'
     }
   }
 })
+
+// Fourth Page: Carolsel
+const swatches = document.querySelectorAll('.swatches img');
+const gallery = document.querySelector('.phone-gallery');
+const slides = document.querySelectorAll('.phone-gallery-container');
+const nav = document.querySelector('nav');
+
+let currentSwatch = 'blue';
+let topIndex = 2;
+let navZindex = 10;
+
+swatches.forEach((swatch, index) => {
+  const coord = slides[index].getBoundingClientRect().left;
+
+  swatch.addEventListener('click', (e) => {
+    let swatchName = e.target.getAttribute('swatch');
+    let closeUpImg = document.querySelector('.' + swatchName);
+    // Check Current Swatch
+    if (currentSwatch === swatchName) return;
+
+    gsap.set(closeUpImg, {zIndex: topIndex})
+    gsap.fromTo(closeUpImg, {opacity:0}, {opacity: 1, duration: 1})
+
+    // Gallery Slide
+    gsap.to(gallery, {x: -coord, duration: 1, ease: "slow(0.1, 0.4, false)"})
+
+    // Raise navBar z-index
+    gsap.set('nav', {zIndex: navZindex})
+
+    topIndex++;
+    navZindex++;
+    currentSwatch = swatchName;
+  });
+});
+
+// Fifth Page: Scroll video
+const tlVideo = gsap.timeline({
+  scrollTrigger: {
+    trigger: '.fifth-page',
+    start: '0%',
+    end: '150%',
+    scrub: true,
+    pin: true,
+    markers: {
+      startColor: 'steelblue',
+      endColor: 'steelblue'
+    }
+  }
+})
+
+tlVideo.fromTo('.product-video', { currentTime: '0' }, { currentTime: '3.007', duration: 1 })
+tlVideo.fromTo('.product-info-container h3', { opacity: 0 }, { opacity: 1, stagger: .25, duration: .5 }, '<')
+
+// Sixth Page: parallax
+const tlParallax = gsap.timeline({
+  scrollTrigger: {
+    trigger: '.sixth-page',
+    start: '-25%',
+    end: '50%',
+    scrub: true
+  }
+});
+
+tlParallax.fromTo('.photo-description', { y: 0 }, { y: -40 })
+tlParallax.fromTo('.portrait-container', { y: 0 }, { y: -40 }, '<')
+tlParallax.fromTo('.phone-video', { y: 0, scale: .8 }, { y: -100, scale: 1 }, '<')
+
+
+
+
+
+
+
+
+//
