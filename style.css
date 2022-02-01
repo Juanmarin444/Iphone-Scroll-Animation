@@ -34,6 +34,10 @@ nav, a {
   width: 950px;
 }
 
+.nav-buttons {
+  display: flex;
+}
+
 .nav-links a,
 .nav-links button {
   margin-left: 1.5rem;
@@ -44,6 +48,7 @@ nav, a {
 }
 
 .buy-button {
+  margin-left: 1.5rem;
   padding: .1rem 1rem;
   font-size: 0.6;
   background: #0171e3;
@@ -328,6 +333,8 @@ nav, a {
   border-radius: 2rem;
 }
 
+
+
 @media only screen and (max-width: 1920px) {
   nav {
     /* background: cyan; */
@@ -352,9 +359,30 @@ nav, a {
   nav {
     /* background: pink; */
   }
-  .nav-links > a {
+  .desktop {
     display: none;
   }
+  .chevron::before {
+    margin-top: .25rem;
+    border-style: solid;
+    border-width: 0.13em 0.13em 0 0;
+    border-color: rgb(70, 70, 70);
+    content: '';
+    display: inline-block;
+    height: 0.5em;
+    left: 0.16em;
+    position: relative;
+    top: 0.16em;
+    transform: rotate(-45deg);
+    vertical-align: top;
+    width: 0.5em;
+  }
+
+  .chevron.bottom:before {
+    top: 0;
+    transform: rotate(135deg);
+  }
+
 }
 @media screen and (max-width: 768px) {
   nav {
@@ -375,7 +403,7 @@ nav, a {
   nav {
     /* background: red; */
   }
-  .nav-links > a {
+  /* .nav-links > a {
     display: none;
-  }
+  } */
 }

@@ -18,10 +18,10 @@ const tlIntro =  gsap.timeline({
 const tlH = gsap.timeline({
   scrollTrigger: {
     trigger: '.second-page',
-    markers: {
-      startColor: 'dodgerblue',
-      endColor: 'dodgerblue'
-    },
+    // markers: {
+    //   startColor: 'dodgerblue',
+    //   endColor: 'dodgerblue'
+    // },
     scrub: true,
     start: '-40%',
     end: '40%'
@@ -33,10 +33,10 @@ tlH.fromTo('.highlight', { color: 'rgba(255,255,255, 0.4)' },{ color: 'rgba(255,
 const tlHRemove = gsap.timeline({
   scrollTrigger: {
     trigger: '.second-page',
-    markers: {
-      startColor: 'firebrick',
-      endColor: 'firebrick'
-    },
+    // markers: {
+    //   startColor: 'firebrick',
+    //   endColor: 'firebrick'
+    // },
     scrub: true,
     start: '-15%',
     end: '65%'
@@ -53,10 +53,10 @@ const tlSplit = gsap.timeline({
     start: '-30%',
     end: '10%',
     scrub: true,
-    markers: {
-      startColor: 'lawngreen',
-      endColor: 'lawngreen'
-    }
+    // markers: {
+    //   startColor: 'lawngreen',
+    //   endColor: 'lawngreen'
+    // }
   }
 })
 
@@ -73,10 +73,10 @@ const tlSplitPin = gsap.timeline({
     pin: true,
     pinSpacing: false,
     scrub: true,
-    markers: {
-      startColor: 'blueviolet',
-      endColor: 'blueviolet'
-    }
+    // markers: {
+    //   startColor: 'blueviolet',
+    //   endColor: 'blueviolet'
+    // }
   }
 })
 
@@ -122,10 +122,10 @@ const tlVideo = gsap.timeline({
     end: '150%',
     scrub: true,
     pin: true,
-    markers: {
-      startColor: 'steelblue',
-      endColor: 'steelblue'
-    }
+    // markers: {
+    //   startColor: 'steelblue',
+    //   endColor: 'steelblue'
+    // }
   }
 })
 
@@ -147,7 +147,10 @@ tlParallax.fromTo('.portrait-container', { y: 0 }, { y: -40 }, '<')
 tlParallax.fromTo('.phone-video', { y: 0, scale: .8 }, { y: -100, scale: 1 }, '<')
 
 
+const chevron = document.querySelector('.chevron');
 
+chevron.addEventListener('click', (e) => {
+})
 
 
 
