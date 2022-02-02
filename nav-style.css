@@ -1,0 +1,162 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: lightpink;
+}
+
+a, button, h1, h2, h3, h4 {
+  color: rgb(40, 40, 40);
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* justify-content: flex-start; */
+  align-items: center;
+  height: 52px;
+  background: rgba(255,255,255, 0.6);
+  backdrop-filter: blur(10px);
+  z-index: 10;
+}
+
+nav, a {
+  text-decoration: none;
+  color: black;
+  font-size: .9rem;
+}
+
+.nav-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 90%;
+  width: 950px;
+}
+
+.nav-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links a,
+.nav-links button {
+  margin-left: 1.5rem;
+}
+
+.nav-links a {
+  font-size: .75rem;
+}
+
+.buy-button {
+  margin-left: 1.5rem;
+  padding: .1rem 1rem;
+  font-size: 0.6;
+  background: #0171e3;
+  color: white;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.logo {
+  font-size: 1.3125rem;
+  font-weight: 500;
+}
+
+.mobile {
+  position: fixed;
+  top: 52px;
+  width: 100vw;
+  display: none;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: rgba(255,255,255, .6);
+  backdrop-filter: blur(10px);
+}
+
+.mobile a {
+  font-size: .85rem;
+  margin-left: 2.5rem;
+}
+
+@media only screen and (max-width: 1920px) {
+  nav {
+    /* background: cyan; */
+  }
+}
+@media only screen and (max-width: 1440px) {
+  nav {
+    /* background: orange; */
+  }
+}
+@media screen and (max-width: 1280px) {
+  nav {
+    /* background: purple; */
+  }
+}
+@media screen and (max-width: 1020px) {
+  nav {
+    /* background: lime; */
+  }
+}
+@media screen and (max-width: 834px) {
+  nav {
+    /* background: pink; */
+  }
+  .desktop {
+    display: none;
+  }
+  .chevron::before {
+    margin-top: .25rem;
+    border-style: solid;
+    border-width: 0.13em 0.13em 0 0;
+    border-color: rgb(70, 70, 70);
+    content: '';
+    display: inline-block;
+    height: 0.5em;
+    left: 0.16em;
+    position: relative;
+    top: 0.16em;
+    transform: rotate(-45deg);
+    vertical-align: top;
+    width: 0.5em;
+  }
+
+  .chevron.bottom:before {
+    top: 0;
+    transform: rotate(135deg);
+  }
+
+}
+@media screen and (max-width: 768px) {
+  nav {
+    /* background: blue; */
+  }
+  .intro-video {
+    display: none;
+  }
+  .first-page {
+    justify-content: flex-start;
+    background-image: url('./images/iphone13Hero.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+@media screen and (max-width: 320px) {
+  nav {
+    /* background: red; */
+  }
+  /* .nav-links > a {
+    display: none;
+  } */
+}

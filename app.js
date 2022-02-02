@@ -147,10 +147,10 @@ tlParallax.fromTo('.portrait-container', { y: 0 }, { y: -40 }, '<')
 tlParallax.fromTo('.phone-video', { y: 0, scale: .8 }, { y: -100, scale: 1 }, '<')
 
 
-const chevron = document.querySelector('.chevron');
-
-chevron.addEventListener('click', (e) => {
-})
+// const chevron = document.querySelector('.chevron');
+//
+// chevron.addEventListener('click', (e) => {
+// })
 
 
 
