@@ -9,11 +9,25 @@ a, button, h1, h2, h3, h4 {
   color: rgb(40, 40, 40);
 }
 
-nav {
+/* nav {
   position: fixed;
   width: 100vw;
   display: flex;
   justify-content: center;
+  height: 52px;
+  background: rgba(255,255,255, 0.6);
+  backdrop-filter: blur(10px);
+  z-index: 10;
+} */
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   height: 52px;
   background: rgba(255,255,255, 0.6);
   backdrop-filter: blur(10px);
@@ -36,6 +50,7 @@ nav, a {
 
 .nav-buttons {
   display: flex;
+  align-items: center;
 }
 
 .nav-links a,
@@ -62,6 +77,41 @@ nav, a {
   font-size: 1.3125rem;
   font-weight: 500;
 }
+
+/* .mobile {
+  position: fixed;
+  top: 52px;
+  width: 100vw;
+  display: none;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: rgba(255,255,255, .6);
+  background: black;
+  backdrop-filter: blur(10px);
+  z-index: 100;
+}
+
+.mobile a {
+  opacity: 0;
+  font-size: .85rem;
+  margin-left: 2.5rem;
+}
+
+.mobile-nav-container {
+  position: relative;
+}
+
+.cover {
+  display: none;
+  background: black;
+  position: fixed;
+  top: 208px;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  opacity: 0;
+  z-index: 9;
+} */
 
 /* First Page */
 .first-page {
@@ -382,6 +432,42 @@ nav, a {
     top: 0;
     transform: rotate(135deg);
   }
+
+  .mobile {
+    position: fixed;
+    top: 52px;
+    width: 100vw;
+    display: none;
+    flex-direction: column;
+    justify-content: flex-start;
+    background: rgba(255,255,255, .6);
+    background: black;
+    backdrop-filter: blur(10px);
+    z-index: 100;
+  }
+
+  .mobile a {
+    opacity: 0;
+    font-size: .85rem;
+    margin-left: 2.5rem;
+  }
+
+  .mobile-nav-container {
+    position: relative;
+  }
+
+  .cover {
+    display: none;
+    background: black;
+    position: fixed;
+    top: 208px;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    opacity: 0;
+    z-index: 9;
+  }
+
 
 }
 @media screen and (max-width: 768px) {

@@ -20,7 +20,6 @@ nav {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* justify-content: flex-start; */
   align-items: center;
   height: 52px;
   background: rgba(255,255,255, 0.6);
@@ -84,8 +83,24 @@ nav, a {
 }
 
 .mobile a {
+  opacity: 0;
   font-size: .85rem;
   margin-left: 2.5rem;
+}
+
+.mobile-nav-container {
+  position: relative;
+}
+
+.cover {
+  background: black;
+  position: fixed;
+  top: 208px;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  opacity: 0;
+  z-index: 9;
 }
 
 @media only screen and (max-width: 1920px) {
@@ -156,7 +171,4 @@ nav, a {
   nav {
     /* background: red; */
   }
-  /* .nav-links > a {
-    display: none;
-  } */
 }
