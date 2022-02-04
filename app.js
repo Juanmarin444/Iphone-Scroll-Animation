@@ -107,6 +107,7 @@ swatches.forEach((swatch, index) => {
 
     // Raise navBar z-index
     gsap.set('nav', {zIndex: navZindex})
+    gsap.set('.cover', {zIndex: navZindex})
 
     topIndex++;
     navZindex++;
@@ -158,29 +159,25 @@ const mNavTl = gsap.timeline({ defaults: { duration: 0.25, ease: "power4.out" }}
 chevron.addEventListener('click', (e) => {
   if (navStatus === "opened") {
     mNavTl.fromTo('.cover', { opacity: .4 }, { opacity: 0 });
-    mNavTl.fromTo('.mobile a', {y: -10, opacity: 1}, {y: -40, opacity: 0, stagger: .1, duration: .50, ease: "power2.out"}, '<');
+    mNavTl.fromTo('.mobile a', { y: -10, opacity: 1 }, { y: -40, opacity: 0, stagger: .1, duration: .50, ease: "power2.out" }, '<');
 
     mNavTl.set('.cover', {display: 'none'});
 
-    mNavTl.fromTo('nav', { background: 'rgba(255,255,255, .85)'}, {background: 'rgba(255,255,255, .6)' });
+    mNavTl.fromTo('nav', { background: 'rgba(250,250,250, .85)', 'borderBottom': 'none' }, { background: 'rgba(250,250,250, .6)', 'borderBottom': 'solid rgb(193, 193, 193) 1px' }, '<');
 
-    mNavTl.fromTo('.mobile', {
-      display: 'flex', height: '156px', justifyContent: 'space-evenly', background: 'rgba(255,255,255, .85)'
-    }, {
-      display: 'none', height: '0', background: 'rgba(255,255,255, .6)'
-    }, '<');
-
+    mNavTl.fromTo('.mobile', { display: 'flex', height: '156px', justifyContent: 'space-evenly' }, { display: 'none', height: '0' }, '<');
+    mNavTl.fromTo('.mobile', { background: 'rgba(250,250,250, .85)' }, { background: 'rgba(255,255,255, .6)', ease: "elastic.out(2, 0.5)" }, '<')
 
     navStatus = "closed"
   } else if (navStatus === "closed") {
 
 
-    mNavTl.fromTo('nav', { background: 'rgba(255,255,255, .6)'}, {background: 'rgba(255,255,255, .85)' });
+    mNavTl.fromTo('nav', { background: 'rgba(250,250,250, .6)', 'borderBottom': 'solid rgb(193, 193, 193) 1px' }, { background: 'rgba(250,250,250, .85)', 'borderBottom': 'none' });
 
     mNavTl.fromTo('.mobile', {
-      display: 'none', height: '0', background: 'rgba(255,255,255, .6)'
+      display: 'none', height: '0', background: 'rgba(250,250,250, .6)'
     }, {
-      display: 'flex', height: '156px', justifyContent: 'space-evenly', background: 'rgba(255,255,255, .85)'
+      display: 'flex', height: '156px', justifyContent: 'space-evenly', background: 'rgba(250,250,250, .85)'
     }, '<');
 
     mNavTl.fromTo('.cover', { opacity: 0 }, { opacity: .4 });
