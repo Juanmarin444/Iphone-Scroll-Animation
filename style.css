@@ -54,6 +54,10 @@ nav, a {
   padding: 15px 0;
 }
 
+.nav-links a:hover {
+  color: #0171e3;
+}
+
 .middle-link {
   border-bottom: solid rgb(193, 193, 193) 1px;
   border-top: solid rgb(193, 193, 193) 1px;
@@ -75,15 +79,20 @@ nav, a {
   font-weight: 500;
 }
 
+.mobile-hero {
+  display: none;
+  /* object-fit: contain; */
+}
+
 /* First Page */
 .first-page {
   min-height: 850px;
   height: 100vh;
-  padding: 0% 20%;
+  padding: 0% 0%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .first-page-text {
@@ -98,11 +107,11 @@ nav, a {
 }
 
 .first-page-title {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
 }
 
 .first-page-subtitle {
-  font-size: 3rem;
+  font-size: 5rem;
 }
 
 .intro-video {
@@ -131,11 +140,21 @@ nav, a {
 }
 
 .second-text {
-  padding: 5% 30%;
+  /* padding: 5% 26%; */
+  padding: 5% 0;
   position: relative;
-  font-size: 3.5rem;
-  font-weight: bold;
+  font-size: 4.5rem;
+  /* font-size: 80px; */
+  line-height: 1.25;
+  font-weight: 600;
+  letter-spacing: -0.015em;
   z-index: 2;
+  margin: 0 auto;
+}
+
+.text-container {
+  width: 100%;
+  max-width: 900px;
 }
 
 /* Third Page - Phone Split */
@@ -364,10 +383,34 @@ nav, a {
   }
 }
 
-@media screen and (max-width: 1020px) {
+@media screen and (max-width: 1068px) {
   nav {
     /* background: lime; */
   }
+
+  .first-page-title {
+    font-size: 1.75rem;
+  }
+
+  .first-page-subtitle {
+    font-size: 3.5rem;
+  }
+
+  .second-page {
+    min-height: 100vh;
+  }
+
+  .second-text {
+    font-size: 3.5rem;
+    line-height: 1.25;
+    font-weight: 600;
+  }
+
+  .text-container {
+    width: 100%;
+    max-width: 692px;
+  }
+
 }
 
 @media screen and (max-width: 834px) {
@@ -433,17 +476,45 @@ nav, a {
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 734px) {
   .intro-video {
     display: none;
   }
+
   .first-page {
-    justify-content: flex-start;
-    background-image: url('./images/iphone13Hero.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    padding: 0% 10%;
+    height: 687px;
+    max-height: 687px;
+    overflow: hidden;
+  }
+  .first-page-title {
+    font-size: 1.55rem;
+  }
+
+  .mobile-hero {
+    display: inline;
+    position: absolute;
+    bottom: 0;
+    object-fit: contain;
+  }
+
+  .second-page {
+    min-height: 100vh;
+  }
+
+  .second-text {
+    font-size: 2rem;
+    line-height: 1.25;
+    font-weight: 600;
+    letter-spacing: 0em;
+  }
+
+  .text-container {
+    width: 100%;
+    max-width: 627px;
+  }
+
+  .third-page {
+    overflow: hidden;
   }
 }
 
