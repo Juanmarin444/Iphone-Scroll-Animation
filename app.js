@@ -18,10 +18,10 @@ const tlIntro =  gsap.timeline({
 const tlH = gsap.timeline({
   scrollTrigger: {
     trigger: '.second-page',
-    markers: {
-      startColor: 'dodgerblue',
-      endColor: 'dodgerblue'
-    },
+    // markers: {
+    //   startColor: 'dodgerblue',
+    //   endColor: 'dodgerblue'
+    // },
     scrub: true,
     start: '-40%',
     end: '40%'
@@ -47,9 +47,42 @@ tlHRemove.to('.highlight', { color: 'rgba(255,255,255, .4)', stagger: 1 });
 
 // Third Page: Phone size fade in
 
-const tlSplit = gsap.timeline({
+// const tlSplit = gsap.timeline({
+//   scrollTrigger: {
+//     trigger: '.third-page',
+//     start: '-30%',
+//     end: '10%',
+//     scrub: true,
+//     // markers: {
+//     //   startColor: 'lawngreen',
+//     //   endColor: 'lawngreen'
+//     // }
+//   }
+// })
+//
+// tlSplit.fromTo('.large-phone', { x: '40%' }, {x: '20%'});
+// tlSplit.fromTo('.small-phone', { x: '-40%' }, { x: '-20%'}, '<');
+// tlSplit.fromTo('.product-text-left', {x: 50, opacity: 0}, {x: 0, opacity: 1}, '<')
+// tlSplit.fromTo('.product-text-right', {x: -50, opacity: 0}, {x: 0, opacity: 1}, '<')
+//
+// const tlSplitPin = gsap.timeline({
+//   scrollTrigger: {
+//     trigger: '.third-page',
+//     start: '0%',
+//     end: '100%',
+//     pin: true,
+//     pinSpacing: false,
+//     scrub: true,
+//     // markers: {
+//     //   startColor: 'blueviolet',
+//     //   endColor: 'blueviolet'
+//     // }
+//   }
+// })
+
+const tlSplit2 = gsap.timeline({
   scrollTrigger: {
-    trigger: '.third-page',
+    trigger: '.third-page-two',
     start: '-30%',
     end: '10%',
     scrub: true,
@@ -60,14 +93,14 @@ const tlSplit = gsap.timeline({
   }
 })
 
-tlSplit.fromTo('.large-phone', { x: '40%' }, {x: '20%'});
-tlSplit.fromTo('.small-phone', { x: '-40%' }, { x: '-20%'}, '<');
-tlSplit.fromTo('.product-text-left', {x: 50, opacity: 0}, {x: 0, opacity: 1}, '<')
-tlSplit.fromTo('.product-text-right', {x: -50, opacity: 0}, {x: 0, opacity: 1}, '<')
+tlSplit2.fromTo('.larger-phone', { x: '30%' }, {x: '20%'});
+tlSplit2.fromTo('.smaller-phone', { x: '-30%' }, { x: '-20%'}, '<');
+tlSplit2.fromTo('.larger-phone-text', {x: 50, opacity: 0}, {x: 0, opacity: 1}, '<')
+tlSplit2.fromTo('.smaller-phone-text', {x: -50, opacity: 0}, {x: 0, opacity: 1}, '<')
 
-const tlSplitPin = gsap.timeline({
+const tlSplitPin2 = gsap.timeline({
   scrollTrigger: {
-    trigger: '.third-page',
+    trigger: '.third-page-two',
     start: '0%',
     end: '100%',
     pin: true,
