@@ -80,6 +80,7 @@ tlHRemove.to('.highlight', { color: 'rgba(255,255,255, .4)', stagger: 1 });
 //   }
 // })
 
+
 const tlSplit2 = gsap.timeline({
   scrollTrigger: {
     trigger: '.third-page-two',
@@ -98,18 +99,45 @@ tlSplit2.fromTo('.smaller-phone', { x: '-30%' }, { x: '-20%'}, '<');
 tlSplit2.fromTo('.larger-phone-text', {x: 50, opacity: 0}, {x: 0, opacity: 1}, '<')
 tlSplit2.fromTo('.smaller-phone-text', {x: -50, opacity: 0}, {x: 0, opacity: 1}, '<')
 
-const tlSplitPin2 = gsap.timeline({
-  scrollTrigger: {
-    trigger: '.third-page-two',
-    start: '0%',
-    end: '100%',
-    pin: true,
-    pinSpacing: false,
-    scrub: true,
-    // markers: {
-    //   startColor: 'blueviolet',
-    //   endColor: 'blueviolet'
-    // }
+
+// If window.height is greater than 700px turn on pinSpacing timeLine
+let tlSplitPin2;
+let tlState = false
+
+if (window.innerHeight > 700) {
+  tlState = true;
+  tlSplitPin2 = gsap.timeline({
+    scrollTrigger: {
+      trigger: '.third-page-two',
+      start: '0%',
+      end: '100%',
+      pin: true,
+      pinSpacing: false,
+      scrub: true,
+    }
+  })
+}
+
+window.addEventListener('resize', () => {
+  if(window.innerHeight > 700 ) {
+    if(tlState === false) {
+      tlSplitPin2 = gsap.timeline({
+        scrollTrigger: {
+          trigger: '.third-page-two',
+          start: '0%',
+          end: '100%',
+          pin: true,
+          pinSpacing: false,
+          scrub: true,
+        }
+      })
+      tlState = true
+    }
+  } else if (window.innerHeight <= 700) {
+    if (tlState === true) {
+      tlSplitPin2.scrollTrigger.kill()
+      tlState = false;
+    }
   }
 })
 
