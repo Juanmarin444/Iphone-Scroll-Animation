@@ -83,7 +83,7 @@ tlHRemove.to('.highlight', { color: 'rgba(255,255,255, .4)', stagger: 1 });
 
 const tlSplit2 = gsap.timeline({
   scrollTrigger: {
-    trigger: '.third-page-two',
+    trigger: '.third-page',
     start: '-30%',
     end: '10%',
     scrub: true,
@@ -104,11 +104,11 @@ tlSplit2.fromTo('.smaller-phone-text', {x: -50, opacity: 0}, {x: 0, opacity: 1},
 let tlSplitPin2;
 let tlState = false
 
-if (window.innerHeight > 700) {
+if (window.innerHeight > 820) {
   tlState = true;
   tlSplitPin2 = gsap.timeline({
     scrollTrigger: {
-      trigger: '.third-page-two',
+      trigger: '.third-page',
       start: '0%',
       end: '100%',
       pin: true,
@@ -123,7 +123,7 @@ window.addEventListener('resize', () => {
     if(tlState === false) {
       tlSplitPin2 = gsap.timeline({
         scrollTrigger: {
-          trigger: '.third-page-two',
+          trigger: '.third-page',
           start: '0%',
           end: '100%',
           pin: true,
