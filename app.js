@@ -139,6 +139,8 @@ window.addEventListener('resize', () => {
       tlState = false;
     }
   }
+
+  let newWindowWidth = window.innerWidth;
 })
 
 // Fourth Page: Carolsel
@@ -150,25 +152,67 @@ const nav = document.querySelector('nav');
 let currentSwatch = 'blue';
 let topIndex = 2;
 let navZindex = 10;
+let currentWindowWidth = window.innerWidth;
 
 swatches.forEach((swatch, index) => {
-  const coord = slides[index].getBoundingClientRect().left;
+  let coord = slides[index].getBoundingClientRect().left;
+
+  // Immediately Updates the current slide on window resize.
+  window.addEventListener('resize', (e) => {
+    let windowWidth = window.innerWidth;
+    if(currentWindowWidth !==  windowWidth) {
+      if (currentSwatch === 'blue' && index === 0) {
+        let offset = (windowWidth - currentWindowWidth) * 0;
+        gsap.to(gallery, {x: -(coord + offset), duration: .1});
+      }
+      if (currentSwatch === 'silver' && index === 1) {
+        let offset = (windowWidth - currentWindowWidth) * .5;
+        gsap.to(gallery, {x: -(coord + offset), duration: .1});
+      }
+      if (currentSwatch === 'gold' && index === 2) {
+        let offset = (windowWidth - currentWindowWidth) * 1;
+        gsap.to(gallery, {x: -(coord + offset), duration: .1});
+      }
+      if (currentSwatch === 'graphite' && index === 3) {
+        let offset = (windowWidth - currentWindowWidth) * 1.5;
+        gsap.to(gallery, {x: -(coord + offset), duration: .1});
+      }
+    }
+  })
 
   swatch.addEventListener('click', (e) => {
+    // Offsetting coord on click when window has been resized.
+    let coordOffset = 0;
+    let windowWidth = window.innerWidth;
+    if(currentWindowWidth !==  windowWidth) {
+      if (index === 0) {
+        coordOffset = (windowWidth - currentWindowWidth) * 0;
+      }
+      if (index === 1) {
+        coordOffset = (windowWidth - currentWindowWidth) * .5;
+      }
+      if (index === 2) {
+        coordOffset = (windowWidth - currentWindowWidth) * 1;
+      }
+      if (index === 3) {
+        coordOffset = (windowWidth - currentWindowWidth) * 1.5;
+      }
+    }
+
     let swatchName = e.target.getAttribute('swatch');
     let closeUpImg = document.querySelector('.' + swatchName);
     // Check Current Swatch
     if (currentSwatch === swatchName) return;
 
-    gsap.set(closeUpImg, {zIndex: topIndex})
-    gsap.fromTo(closeUpImg, {opacity:0}, {opacity: 1, duration: 1})
+    gsap.set(closeUpImg, {zIndex: topIndex});
+    gsap.fromTo(closeUpImg, {opacity:0}, {opacity: 1, duration: 1});
 
     // Gallery Slide
-    gsap.to(gallery, {x: -coord, duration: 1, ease: "slow(0.1, 0.4, false)"})
+    gsap.to(gallery, {x: -(coord + coordOffset), duration: 1, ease: "slow(0.1, 0.4, false)"});
 
     // Raise navBar z-index
-    gsap.set('nav', {zIndex: navZindex})
-    gsap.set('.cover', {zIndex: navZindex})
+    gsap.set('nav', {zIndex: navZindex});
+    gsap.set('.cover', {zIndex: navZindex});
 
     topIndex++;
     navZindex++;
