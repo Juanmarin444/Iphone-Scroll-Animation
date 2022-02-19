@@ -1,154 +1,3 @@
-// First Page: Pin and pinSpacing
-
-const tlIntro =  gsap.timeline({
-  scrollTrigger: {
-    trigger: '.first-page',
-    pin: true,
-    pinSpacing: false,
-    // markers: {
-    //   startColor: 'mediumorchid',
-    //   endColor: 'mediumorchid'
-    // },
-    start: '0%',
-    end: '100%',
-  }
-})
-
-// Second Page: Fade in and out Highlight
-const tlH = gsap.timeline({
-  scrollTrigger: {
-    trigger: '.second-page',
-    // markers: {
-    //   startColor: 'dodgerblue',
-    //   endColor: 'dodgerblue'
-    // },
-    scrub: true,
-    start: '-40%',
-    end: '40%'
-  }
-})
-
-tlH.fromTo('.highlight', { color: 'rgba(255,255,255, 0.4)' },{ color: 'rgba(255,255,255, 1)', stagger: 1 });
-
-const tlHRemove = gsap.timeline({
-  scrollTrigger: {
-    trigger: '.second-page',
-    // markers: {
-    //   startColor: 'firebrick',
-    //   endColor: 'firebrick'
-    // },
-    scrub: true,
-    start: '-28%',
-    end: '65%'
-  }
-})
-
-tlHRemove.to('.highlight', { color: 'rgba(255,255,255, .4)', stagger: 1 });
-
-// Third Page: Phone size fade in
-
-// const tlSplit = gsap.timeline({
-//   scrollTrigger: {
-//     trigger: '.third-page',
-//     start: '-30%',
-//     end: '10%',
-//     scrub: true,
-//     // markers: {
-//     //   startColor: 'lawngreen',
-//     //   endColor: 'lawngreen'
-//     // }
-//   }
-// })
-//
-// tlSplit.fromTo('.large-phone', { x: '40%' }, {x: '20%'});
-// tlSplit.fromTo('.small-phone', { x: '-40%' }, { x: '-20%'}, '<');
-// tlSplit.fromTo('.product-text-left', {x: 50, opacity: 0}, {x: 0, opacity: 1}, '<')
-// tlSplit.fromTo('.product-text-right', {x: -50, opacity: 0}, {x: 0, opacity: 1}, '<')
-//
-// const tlSplitPin = gsap.timeline({
-//   scrollTrigger: {
-//     trigger: '.third-page',
-//     start: '0%',
-//     end: '100%',
-//     pin: true,
-//     pinSpacing: false,
-//     scrub: true,
-//     // markers: {
-//     //   startColor: 'blueviolet',
-//     //   endColor: 'blueviolet'
-//     // }
-//   }
-// })
-
-
-const tlSplit2 = gsap.timeline({
-  scrollTrigger: {
-    trigger: '.third-page',
-    start: '-30%',
-    end: '10%',
-    scrub: true,
-    // markers: {
-    //   startColor: 'lawngreen',
-    //   endColor: 'lawngreen'
-    // }
-  }
-})
-
-tlSplit2.fromTo('.larger-phone', { x: '30%' }, {x: '20%'});
-tlSplit2.fromTo('.smaller-phone', { x: '-30%' }, { x: '-20%'}, '<');
-tlSplit2.fromTo('.larger-phone-text', {x: 50, opacity: 0}, {x: 0, opacity: 1}, '<')
-tlSplit2.fromTo('.smaller-phone-text', {x: -50, opacity: 0}, {x: 0, opacity: 1}, '<')
-
-
-// If window.height is greater than 700px turn on pinSpacing timeLine
-let tlSplitPin2;
-let tlState = false
-
-if (window.innerHeight > 820) {
-  tlState = true;
-  tlSplitPin2 = gsap.timeline({
-    scrollTrigger: {
-      trigger: '.third-page',
-      start: '0%',
-      end: '100%',
-      pin: true,
-      pinSpacing: false,
-      scrub: true,
-    }
-  })
-}
-
-window.addEventListener('resize', () => {
-  if(window.innerHeight > 700 ) {
-    if(tlState === false) {
-      tlSplitPin2 = gsap.timeline({
-        scrollTrigger: {
-          trigger: '.third-page',
-          start: '0%',
-          end: '100%',
-          pin: true,
-          pinSpacing: false,
-          scrub: true,
-        }
-      })
-      tlState = true
-    }
-  } else if (window.innerHeight <= 700) {
-    if (tlState === true) {
-      tlSplitPin2.scrollTrigger.kill()
-      tlState = false;
-    }
-  }
-
-  // let newWindowWidth = window.innerWidth;
-  // // console.log('CHECK IT SON', currentWindowWidth, newWindowWidth)
-  // if(newWindowWidth >= 1280) {
-  //   isMobile = false;
-  // } else if (newWindowWidth < 1280) {
-  //   isMobile = true;
-  // }
-})
-
 // Fourth Page: Carolsel
 const swatches = document.querySelectorAll('.swatches img');
 const gallery = document.querySelector('.phone-gallery');
@@ -164,16 +13,21 @@ let currentWindowWidth = window.innerWidth;
 
 swatches.forEach((swatch, index) => {
   let coord = slides[index].getBoundingClientRect().left;
-
+  let mobileToDesk = false;
+  let deskToMobile = false;
   // Immediately Updates the current slide on window resize.
   window.addEventListener('resize', (e) => {
     let windowWidth = window.innerWidth;
-
-    if(windowWidth >= 1280) {
+    console.log(currentWindowWidth, windowWidth)
+    if(windowWidth >= 1280 && currentWindowWidth <= 1280) {
       isMobile = false;
+      mobileToDesk = true;
+      deskToMobile = false;
       // console.log('yo its desktoping')
     } else if (windowWidth < 1280) {
       isMobile = true;
+      deskToMobile = true;
+      mobileToDesk = false;
       // console.log('yo its mobiling')
     }
 
@@ -212,6 +66,7 @@ swatches.forEach((swatch, index) => {
         gsap.to(gallery, {x: -(coord + offset), duration: .1});
       }
     }
+
   })
 
   swatch.addEventListener('click', (e) => {
@@ -231,7 +86,6 @@ swatches.forEach((swatch, index) => {
       if (index === 3) {
         coordOffset = (windowWidth - currentWindowWidth) * 1.5;
       }
-      console.log(`isMobile: ${isMobile}, coord: ${coord}, offSet: ${coordOffset}`)
     } else if(currentWindowWidth !==  windowWidth && isMobile) {
       if (index === 0) {
         coordOffset = (windowWidth - currentWindowWidth) * 0;
@@ -245,7 +99,12 @@ swatches.forEach((swatch, index) => {
       if (index === 3) {
         coordOffset = (windowWidth - currentWindowWidth) * 3;
       }
-      console.log(`isMobile: ${isMobile}, coord: ${coord}, offSet: ${coordOffset}`)
+    }
+    console.log(`width: ${windowWidth}, coord: ${coord}, offSet: ${coordOffset}`)
+    if(mobileToDesk) {
+      console.log((2 / coord) + coordOffset);
+    } else if(deskToMobile) {
+      console.log((2 * coord) + coordOffset);
     }
 
     let swatchName = e.target.getAttribute('swatch');
@@ -257,7 +116,15 @@ swatches.forEach((swatch, index) => {
     gsap.fromTo(closeUpImg, {opacity:0}, {opacity: 1, duration: 1});
 
     // Gallery Slide
-    gsap.to(gallery, {x: -(coord + coordOffset), duration: 1, ease: "slow(0.1, 0.4, false)"});
+    if(mobileToDesk) {
+      gsap.to(gallery, {x: -((coord / 2) + coordOffset), duration: 1, ease: "slow(0.1, 0.4, false)"});
+      mobileToDesk = false
+    } else if(deskToMobile) {
+      gsap.to(gallery, {x: -((coord * 2) + coordOffset), duration: 1, ease: "slow(0.1, 0.4, false)"});
+      deskToMobile = false;
+    } else {
+      gsap.to(gallery, {x: -(coord + coordOffset), duration: 1, ease: "slow(0.1, 0.4, false)"});
+    }
 
     // Raise navBar z-index
     gsap.set('nav', {zIndex: navZindex});
@@ -268,39 +135,6 @@ swatches.forEach((swatch, index) => {
     currentSwatch = swatchName;
   });
 });
-
-// Fifth Page: Scroll video
-const tlVideo = gsap.timeline({
-  scrollTrigger: {
-    trigger: '.fifth-page',
-    start: '0%',
-    end: '150%',
-    scrub: true,
-    pin: true,
-    // markers: {
-    //   startColor: 'steelblue',
-    //   endColor: 'steelblue'
-    // }
-  }
-})
-
-tlVideo.fromTo('.product-video', { currentTime: '0' }, { currentTime: '3.007', duration: 1 })
-tlVideo.fromTo('.product-info-container h3', { opacity: 0 }, { opacity: 1, stagger: .25, duration: .5 }, '<')
-
-// Sixth Page: parallax
-const tlParallax = gsap.timeline({
-  scrollTrigger: {
-    trigger: '.sixth-page',
-    start: '-25%',
-    end: '50%',
-    scrub: true
-  }
-});
-
-tlParallax.fromTo('.photo-description', { y: 0 }, { y: -40 })
-tlParallax.fromTo('.portrait-container', { y: 0 }, { y: -40 }, '<')
-tlParallax.fromTo('.phone-video', { y: 0, scale: .8 }, { y: -100, scale: 1 }, '<')
-
 
 // Mobile NavBar
 
@@ -342,9 +176,3 @@ chevron.addEventListener('click', (e) => {
     navStatus = "opened"
   }
 })
-
-
-
-
-
-//

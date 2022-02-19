@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Scroll Animations</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <nav>
+      <div class="nav-content">
+        <a href="./index.html" class="logo">iPhone 13 Pro</a>
+        <div class="nav-buttons">
+          <div class="nav-links desktop">
+            <a href="#">Overview</a>
+            <a href="#">Switching to iPhone</a>
+            <a href="#">Tech Specs</a>
+          </div>
+          <span class="chevron bottom"></span>
+          <button class="buy-button">Buy</button>
+        </div>
+      </div>
+    </nav>
+
+    <div class="nav-links mobile">
+      <a href="#">Overview</a>
+      <a class="middle-link" href="#">Switching to iPhone</a>
+      <a href="#">Tech Specs</a>
+    </div>
+    <div class="cover"></div>
+
+    <section class="fourth-page">
+      <div class="purchase-left">
+        <div class="phone-gallery">
+          <div class="phone-gallery-container blue-cont">
+            <img class="blue-back" src="./images/blue-iphone-back.png" alt="">
+          </div>
+          <div class="phone-gallery-container blue-cont">
+            <img class="silver-back" src="./images/silver-iphone-back.png" alt="">
+          </div>
+          <div class="phone-gallery-container blue-cont">
+            <img class="gold-back" src="./images/gold-iphone-back.png" alt="">
+          </div>
+          <div class="phone-gallery-container blue-cont">
+            <img class="graphite-back" src="./images/graphite-iphone-back.png" alt="">
+          </div>
+        </div>
+        <div class="swatch-container">
+          <div class="swatches">
+            <img src="./images/swatch-blue.svg" swatch="blue" alt="">
+            <img src="./images/swatch-silver.svg" swatch="silver" alt="">
+            <img src="./images/swatch-gold.svg" swatch="gold" alt="">
+            <img src="./images/swatch-graphite.svg" swatch="graphite" alt="">
+          </div>
+          <p><span>Sierra Blue</span>, <span>Silver</span>, <span>Gold</span>, <span>Graphite.</span></p>
+        </div>
+      </div>
+      <div class="purchase-right">
+        <img class="silver phone" src="./images/silver-closeup.png" alt="">
+        <img class="gold phone" src="./images/gold-closeup.png" alt="">
+        <img class="graphite phone" src="./images/graphite-closeup.png" alt="">
+        <img class="blue phone" src="./images/blue-closeup.png" alt="">
+      </div>
+    </section>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js" integrity="sha512-eP6ippJojIKXKO8EPLtsUMS+/sAGHGo1UN/38swqZa1ypfcD4I0V/ac5G3VzaHfDaklFmQLEs51lhkkVaqg60Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/ScrollTrigger.min.js" integrity="sha512-CPA5LMoJI/a5HkSIAKcBtFXe4gqGjPUL2ExF/3PmhrrHI17wod9xOqqF+0WZQRKIIq0KwF8oG5BaiWobtrke3A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./pageFourApp.js" charset="utf-8"></script>
+  </body>
+</html>
