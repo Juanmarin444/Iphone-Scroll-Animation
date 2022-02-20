@@ -413,40 +413,43 @@ nav, a {
     /* background: purple; */
   }
 
-  .purchase-left {
+  /* .purchase-left {
     background: white;
     display: flex;
     flex-direction: column;
     overflow: hidden;
     align-items: center;
-    justify-content: center;
+    justify-content: center; */
     /* flex: 1; */
-    width: 100%;
-  }
+    /* width: 100%;
+  } */
 
-  .purchase-right {
+  /* .purchase-right {
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+    align-items: flex-end; */
     /* flex: 2; */
-    min-height: 730px;
+    /* min-height: 730px;
     position: relative;
     background: #030203;
     background: -webkit-linear-gradient(to right, #1e1d1e, #030203);
     background: linear-gradient(to right, #1e1d1e, #030203);
-  }
+  } */
 
-  .purchase-right img {
+  /* .purchase-right img {
     position: absolute;
     bottom: 0%;
     left: 50%;
     transform: translate(-50%, 0%) scale(.8);
     transform-origin: bottom;
-  }
+  } */
 
-  .fourth-page {
+  /* .fourth-page {
     flex-direction: column;
     background: lightblue;
+  } */
+  .purchase-right img {
+    transform: translate(-50%, 0%) scale(.75);
   }
 }
 
@@ -486,7 +489,9 @@ nav, a {
     /* transform: scale(1); */
 
   }
-
+  .purchase-right img {
+    transform: translate(-50%, 0%) scale(.62);
+  }
 }
 
 @media screen and (max-width: 834px) {
@@ -549,6 +554,42 @@ nav, a {
     width: 100vw;
     opacity: 0;
     z-index: 9;
+  }
+
+  .purchase-left {
+    background: white;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    /* flex: 1; */
+    width: 100%;
+  }
+
+  .purchase-right {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    /* flex: 2; */
+    min-height: 730px;
+    position: relative;
+    background: #030203;
+    background: -webkit-linear-gradient(to right, #1e1d1e, #030203);
+    background: linear-gradient(to right, #1e1d1e, #030203);
+  }
+
+  .purchase-right img {
+    position: absolute;
+    bottom: 0%;
+    left: 50%;
+    transform: translate(-50%, 0%) scale(.8);
+    transform-origin: bottom;
+  }
+
+  .fourth-page {
+    flex-direction: column;
+    background: lightblue;
   }
 
   .purchase-right {

@@ -9,22 +9,22 @@ let isMobile = window.innerWidth >= 1280 ? false : true;
 let currentSwatch = 'blue';
 let topIndex = 2;
 let navZindex = 10;
-let currentWindowWidth = window.innerWidth;
 
 swatches.forEach((swatch, index) => {
+  let currentWindowWidth = window.innerWidth;
   let coord = slides[index].getBoundingClientRect().left;
   let mobileToDesk = false;
   let deskToMobile = false;
   // Immediately Updates the current slide on window resize.
   window.addEventListener('resize', (e) => {
     let windowWidth = window.innerWidth;
-    console.log(currentWindowWidth, windowWidth)
-    if(windowWidth >= 1280 && currentWindowWidth <= 1280) {
+    // console.log(currentWindowWidth, windowWidth)
+    if(windowWidth > 834 && currentWindowWidth <= 834) {
       isMobile = false;
       mobileToDesk = true;
       deskToMobile = false;
       // console.log('yo its desktoping')
-    } else if (windowWidth < 1280) {
+    } else if (windowWidth <= 834 && currentWindowWidth > 834) {
       isMobile = true;
       deskToMobile = true;
       mobileToDesk = false;
@@ -100,11 +100,12 @@ swatches.forEach((swatch, index) => {
         coordOffset = (windowWidth - currentWindowWidth) * 3;
       }
     }
-    console.log(`width: ${windowWidth}, coord: ${coord}, offSet: ${coordOffset}`)
+    console.log(`index: ${index}, width: ${windowWidth}, coord: ${coord}, offSet: ${coordOffset}`)
     if(mobileToDesk) {
-      console.log((2 / coord) + coordOffset);
+      console.log('valuse check real quick', coord, coordOffset)
+      console.log("PLATFORM HAS CHANGED", (coord / 2) + coordOffset);
     } else if(deskToMobile) {
-      console.log((2 * coord) + coordOffset);
+      console.log("PLATFORM HAS CHANGED", (coord * 2) + coordOffset);
     }
 
     let swatchName = e.target.getAttribute('swatch');
@@ -117,12 +118,18 @@ swatches.forEach((swatch, index) => {
 
     // Gallery Slide
     if(mobileToDesk) {
-      gsap.to(gallery, {x: -((coord / 2) + coordOffset), duration: 1, ease: "slow(0.1, 0.4, false)"});
+      console.log("yo what fuck again")
+      coord = ((coord / 2) + coordOffset)
+      gsap.to(gallery, {x: -coord, duration: 1, ease: "slow(0.1, 0.4, false)"});
       mobileToDesk = false
     } else if(deskToMobile) {
-      gsap.to(gallery, {x: -((coord * 2) + coordOffset), duration: 1, ease: "slow(0.1, 0.4, false)"});
+      console.log("yo what fuck", index)
+      coord = ((coord * 2) + coordOffset)
+      gsap.to(gallery, {x: -coord, duration: 1, ease: "slow(0.1, 0.4, false)"});
       deskToMobile = false;
     } else {
+      currentWindowWidth = window.innerWidth;
+      console.log(`No fucks. coord: ${coord}, coordOffset: ${coordOffset}`)
       gsap.to(gallery, {x: -(coord + coordOffset), duration: 1, ease: "slow(0.1, 0.4, false)"});
     }
 
