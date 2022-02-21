@@ -273,7 +273,6 @@ nav, a {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: dashed .5px red;
 }
 
 .swatch-container {
@@ -413,43 +412,8 @@ nav, a {
     /* background: purple; */
   }
 
-  /* .purchase-left {
-    background: white;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    align-items: center;
-    justify-content: center; */
-    /* flex: 1; */
-    /* width: 100%;
-  } */
-
-  /* .purchase-right {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end; */
-    /* flex: 2; */
-    /* min-height: 730px;
-    position: relative;
-    background: #030203;
-    background: -webkit-linear-gradient(to right, #1e1d1e, #030203);
-    background: linear-gradient(to right, #1e1d1e, #030203);
-  } */
-
-  /* .purchase-right img {
-    position: absolute;
-    bottom: 0%;
-    left: 50%;
-    transform: translate(-50%, 0%) scale(.8);
-    transform-origin: bottom;
-  } */
-
-  /* .fourth-page {
-    flex-direction: column;
-    background: lightblue;
-  } */
   .purchase-right img {
-    transform: translate(-50%, 0%) scale(.75);
+    transform: translate(-50%, 0%) scale(.68);
   }
 }
 
@@ -481,16 +445,8 @@ nav, a {
     max-width: 692px;
   }
 
-  .larger-phone-text {
-    /* transform: scale(1); */
-  }
-
-  .smaller-phone-text {
-    /* transform: scale(1); */
-
-  }
   .purchase-right img {
-    transform: translate(-50%, 0%) scale(.62);
+    transform: translate(-50%, 0%) scale(.53);
   }
 }
 
@@ -563,7 +519,6 @@ nav, a {
     overflow: hidden;
     align-items: center;
     justify-content: center;
-    /* flex: 1; */
     width: 100%;
   }
 
@@ -571,7 +526,6 @@ nav, a {
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    /* flex: 2; */
     min-height: 730px;
     position: relative;
     background: #030203;
@@ -640,13 +594,11 @@ nav, a {
   }
 
   .larger-phone {
-    /* transform: translateX(45%); */
     flex-direction: column;
     align-items: center;
   }
 
   .smaller-phone {
-    /* transform: translateX(-45%); */
     flex-direction: column-reverse;
     justify-content: space-between;
     align-items: center;
