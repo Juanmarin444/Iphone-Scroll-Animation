@@ -1,14 +1,39 @@
-// First Page: Pin and pinSpacing
+console.clear()
+// Prep videos on site
+const introVideo = document.querySelector('.intro-video');
+const smokeVideo = document.querySelector('.smoke-video');
+const productVideo = document.querySelector('.product-video');
+const phoneVideo = document.querySelector('.phone-vid');
 
+function once(el, event, fn, opts) {
+  var onceFn = function (e) {
+    el.removeEventListener(event, onceFn);
+    fn.apply(this, arguments);
+  };
+  el.addEventListener(event, onceFn, opts);
+  return onceFn;
+}
+
+once(document.documentElement, "touchstart", function (e) {
+  productVideo.load();
+  productVideo.pause();
+  smokeVideo.load();
+  smokeVideo.pause();
+  smokeVideo.play();
+  introVideo.load();
+  introVideo.pause();
+  introVideo.play();
+  phoneVideo.load();
+  phoneVideo.pause();
+  phoneVideo.play();
+});
+
+// First Page: Pin and pinSpacing
 const tlIntro =  gsap.timeline({
   scrollTrigger: {
     trigger: '.first-page',
     pin: true,
     pinSpacing: false,
-    // markers: {
-    //   startColor: 'mediumorchid',
-    //   endColor: 'mediumorchid'
-    // },
     start: '0%',
     end: '100%',
   }
@@ -18,10 +43,6 @@ const tlIntro =  gsap.timeline({
 const tlH = gsap.timeline({
   scrollTrigger: {
     trigger: '.second-page',
-    // markers: {
-    //   startColor: 'dodgerblue',
-    //   endColor: 'dodgerblue'
-    // },
     scrub: true,
     start: '-40%',
     end: '40%'
@@ -33,10 +54,6 @@ tlH.fromTo('.highlight', { color: 'rgba(255,255,255, 0.4)' },{ color: 'rgba(255,
 const tlHRemove = gsap.timeline({
   scrollTrigger: {
     trigger: '.second-page',
-    // markers: {
-    //   startColor: 'firebrick',
-    //   endColor: 'firebrick'
-    // },
     scrub: true,
     start: '-28%',
     end: '65%'
@@ -45,52 +62,12 @@ const tlHRemove = gsap.timeline({
 
 tlHRemove.to('.highlight', { color: 'rgba(255,255,255, .4)', stagger: 1 });
 
-// Third Page: Phone size fade in
-
-// const tlSplit = gsap.timeline({
-//   scrollTrigger: {
-//     trigger: '.third-page',
-//     start: '-30%',
-//     end: '10%',
-//     scrub: true,
-//     // markers: {
-//     //   startColor: 'lawngreen',
-//     //   endColor: 'lawngreen'
-//     // }
-//   }
-// })
-//
-// tlSplit.fromTo('.large-phone', { x: '40%' }, {x: '20%'});
-// tlSplit.fromTo('.small-phone', { x: '-40%' }, { x: '-20%'}, '<');
-// tlSplit.fromTo('.product-text-left', {x: 50, opacity: 0}, {x: 0, opacity: 1}, '<')
-// tlSplit.fromTo('.product-text-right', {x: -50, opacity: 0}, {x: 0, opacity: 1}, '<')
-//
-// const tlSplitPin = gsap.timeline({
-//   scrollTrigger: {
-//     trigger: '.third-page',
-//     start: '0%',
-//     end: '100%',
-//     pin: true,
-//     pinSpacing: false,
-//     scrub: true,
-//     // markers: {
-//     //   startColor: 'blueviolet',
-//     //   endColor: 'blueviolet'
-//     // }
-//   }
-// })
-
-
 const tlSplit2 = gsap.timeline({
   scrollTrigger: {
     trigger: '.third-page',
     start: '-30%',
     end: '10%',
     scrub: true,
-    // markers: {
-    //   startColor: 'lawngreen',
-    //   endColor: 'lawngreen'
-    // }
   }
 })
 
@@ -294,6 +271,7 @@ swatches.forEach((swatch, index) => {
 });
 
 // Fifth Page: Scroll video
+
 const tlVideo = gsap.timeline({
   scrollTrigger: {
     trigger: '.fifth-page',
@@ -301,15 +279,13 @@ const tlVideo = gsap.timeline({
     end: '150%',
     scrub: true,
     pin: true,
-    // markers: {
-    //   startColor: 'steelblue',
-    //   endColor: 'steelblue'
-    // }
   }
 })
 
-tlVideo.fromTo('.product-video', { currentTime: '0' }, { currentTime: '3.007', duration: 1 })
-tlVideo.fromTo('.product-info-container h3', { opacity: 0 }, { opacity: 1, stagger: .25, duration: .5 }, '<')
+once(productVideo, "loadedmetadata", () => {
+  tlVideo.fromTo('.product-video', { currentTime: '0' }, { currentTime: '2.9', duration: 1 })
+  tlVideo.fromTo('.product-info-container h3', { opacity: 0 }, { opacity: 1, stagger: .25, duration: .5 }, '<')
+})
 
 // Sixth Page: parallax
 const tlParallax = gsap.timeline({
@@ -366,7 +342,6 @@ chevron.addEventListener('click', (e) => {
     navStatus = "opened"
   }
 })
-
 
 
 
